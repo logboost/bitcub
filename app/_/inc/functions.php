@@ -77,8 +77,7 @@
 	}
 
 	function connectOpenID($redirect) {
-		//$oidc = new OpenIDConnectClient('http://logboost.com/',$GLOBALS['OpenID_clientID'],$GLOBALS['OpenID_clientSecret']);
-		$oidc = new OpenIDConnectClient('http://localhost:8080/logbooster/',$GLOBALS['OpenID_clientID'],$GLOBALS['OpenID_clientSecret']);
+		$oidc = new OpenIDConnectClient('http://logboost.com/',$GLOBALS['OpenID_clientID'],$GLOBALS['OpenID_clientSecret']);
 		$oidc->addScope("openid profile payment") ;
 		if($redirect != null) {
 			$oidc->setRedirectURL($redirect);
