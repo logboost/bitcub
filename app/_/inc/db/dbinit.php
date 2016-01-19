@@ -25,9 +25,7 @@ class SqliteDb
 				authcode VARCHAR(2048),
 				username VARCHAR(128),
 				ip VARCHAR(128),
-				date DATE,
-				validuntil DATE,
-				plan INTEGER
+				date DATE
 				);');
 
 			// CREATE FILES TABLE
@@ -54,9 +52,26 @@ class SqliteDb
 			$this->db->exec('INSERT INTO config (key, value) VALUES ("openid_clientid ", "");');
 			$this->db->exec('INSERT INTO config (key, value) VALUES ("openid_clientsecret ", "");');
 			$this->db->exec('INSERT INTO config (key, value) VALUES ("maxfilesize ", 0);');
+			$this->db->exec('INSERT INTO config (key, value) VALUES ("dbversion", 0);');
+			$this->upgradeDb() ;
 		} else {
 			$this->db = new SQLite3(self::$dbpath.'db/'.self::$dbfile);
+			$this->upgradeDb() ;
 		}
+	}
+
+	public function upgradeDb() {
+		$dbversion = 0 ;
+		$results = $this->db->query('SELECT value FROM config WHERE key="dbversion"');
+		while ($row = $results->fetchArray()) {
+	    	$dbversion = $row['value'];
+		}
+		
+		if($dbversion == 0) {
+			$this->db->exec('ALTER TABLE sessions ADD validuntil DATE') ;
+			$this->db->exec('ALTER TABLE sessions ADD plan INTEGER') ;
+			$this->db->exec('INSERT INTO config (key, value) VALUES ("dbversion", 1);');
+		}			
 	}
 
 	public static function getInstance() {
