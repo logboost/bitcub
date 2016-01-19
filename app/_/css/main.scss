@@ -1,0 +1,259 @@
+@import 'init';
+@import 'glitch';
+
+/******************************************************
+* MAIN.SCSS
+*	Main site element styles go in this file.
+*	Iclude styles for primary elements that are
+*	used site wide (a, h1, p, body, etc).
+\******************************************************/
+
+
+html, body {
+	@include BodyCopy;
+	height:100%;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif ;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Arial";
+}
+
+#PageBody {
+	min-height:100%;
+	margin-bottom:-40px ;
+	padding-bottom:40px ;
+}
+
+#SiteFooter {
+	padding-right: 15px ;
+	padding-left: 15px ;
+	text-align:right ;
+	line-height:40px ;
+}
+
+#push {
+	height:25px ;
+}
+/***** GENERAL *****/
+
+.outvcenter {
+	display:block;
+    justify-content: center;
+    align-items: center;
+    padding-top:150px;
+    //height: 85%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom:5px;
+}
+
+.invcenter {
+	position:relative;
+	top:25%;
+	text-align:center;
+	width:100%;
+}
+
+.progress {
+    height: 18px;
+    margin-top:15px ;
+}
+
+.btn-xxl {
+	min-height:25px;
+	min-width:200px;
+	padding: 13px 45px;
+	font-size: 22px;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+}
+
+
+/***** TOPBAR *****/
+
+#topbar {
+	background-image:linear-gradient(to bottom,rgba(255,255,255,0.7) 0,rgba(255,255,255,0) 100%);
+	line-height:62px ;
+	border-bottom: #909090 2px solid;
+}
+
+#topbar div {
+}
+
+#topbar span {
+	margin-left:15px ;
+	margin-right:15px;
+}
+
+#topbar-user {
+	text-align:right;
+}
+
+#topbar-server {
+}
+
+#topbar-logo {
+	text-align:center ;
+	padding-top:10px;
+	line-height:62px;
+	height:62px;
+}
+
+#btn-logout {
+	
+}
+
+.cube-animated {
+  @include svgGlitch("cube-animated", 17, black, white, black, black, 240, 42,10,0);
+}
+
+/***** ALERTS *****/
+.alert-bitcub {
+	padding:5px ;
+	text-align:center ;
+}
+
+/***** CUSTOM INPUT FILE BUTTON *****/
+
+label.upload-btn input[type="file"] {
+    position: fixed;
+    top: -1000px;
+}
+
+/***** UPLOAD PAGE *****/
+#uploadinfos {
+	text-align:left ;
+}
+
+#uploadinfos p {
+	margin-bottom:2px!important ;
+}
+
+#upload-options {
+	margin-top:10px ;
+}
+
+#upload-options input {
+	margin-left:10px ;
+}
+
+.btn:active {
+	outline: none!important;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+#upload-maxfilesize {
+	font-size: 12px;
+	margin-top: 7px;
+}
+
+/***** INDEX *****/
+.logindiv {
+	top:36%;
+	background-color:#F1F1F1;
+	border:1px solid grey ;
+	padding-bottom:20px ;
+}
+.login-logo {
+	margin-bottom:10px ;
+	display:block;
+}
+
+.login-banner {
+	border-radius:0px;
+	border:none;
+	height:35px ;
+	line-height:35px ;
+	background-color:#2D2D2D;
+	color:white;
+	margin-bottom: 15px;
+}
+
+.login-text {
+	margin-bottom:20px ;
+}
+
+.lbbtn-woodcub {
+	min-height: 25px;
+    min-width: 200px;
+    font-size: 17px;
+    display: inline-block;
+    padding: 8px 20px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size:17px ;
+    color:white;
+}
+
+.login-title {
+	font-size:2em ;
+	margin-bottom:10px ;
+}
+
+/***** ADMIN *****/
+
+.adminfile {
+	display:block;
+}
+
+.adminfile_fid {
+	display:inline-block;
+	width:30%;
+}
+
+.adminfile_name {
+	display:inline-block;
+	width:40%;
+	overflow:auto ;
+}
+
+.adminfile_size {
+	text-align:right;
+	display:inline-block;
+	width:15%;
+}
+
+.adminfile_action {
+	display:inline-block;
+	width:5%;
+	text-align:right;
+}
+
+.adminfile_usage {
+	display:inline-block;
+	width:5%;
+	text-align:right;
+}
+
+.adminnav {
+	padding-top:30px ;
+	width:100%;
+	text-align:center ;
+}
+
+.adminlogo {
+	text-align:center ;
+}
+
+.adminmenuitem {
+	display:inline-block;
+	margin-left:20px;
+	margin-right:20px ;
+}
+
+#adminmenu {
+	margin-top:10px ;
+	width:100%;
+	text-align:center ;
+}

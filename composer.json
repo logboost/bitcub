@@ -1,0 +1,15 @@
+{
+    "name": "bitcub",
+    "repositories": [
+	    {
+	    	"type": "vcs",
+	    	"url": "https://github.com/jumbojett/OpenID-Connect-PHP"
+	    }
+    ],
+    "require": {
+        "jumbojett/openid-connect-php": "dev-master"
+    },
+    "config": {
+    	"vendor-dir": "app/_/inc/vendor/"
+    }
+}

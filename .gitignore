@@ -1,0 +1,13 @@
+.sass-cache
+.tmp
+.DS_Store
+composer.lock
+composer.phar
+dist
+node_modules
+release
+app/_/bower_components
+app/files/*
+app/db/*
+app/_/inc/vendor/
+!app/**/.htaccess
