@@ -1,15 +1,20 @@
 {
     "name": "bitcub",
     "repositories": [
-	    {
-	    	"type": "vcs",
-	    	"url": "https://github.com/jumbojett/OpenID-Connect-PHP"
-	    }
+        {
+            "type": "vcs",
+            "url": "https://github.com/logboost/logboost-api-php"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/jumbojett/OpenID-Connect-PHP"
+        }
     ],
     "require": {
-        "jumbojett/openid-connect-php": "dev-master"
+        "logboost/logboost-api-php": "dev-master"
     },
     "config": {
     	"vendor-dir": "app/_/inc/vendor/"
-    }
+    },
+    "minimum-stability": "dev"
 }

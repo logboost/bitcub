@@ -76,29 +76,15 @@
 		return false;
 	}
 
-	function connectOpenID($redirect) {
-		$oidc = new OpenIDConnectClient('http://logboost.com/',$GLOBALS['OpenID_clientID'],$GLOBALS['OpenID_clientSecret']);
-		$oidc->addScope("openid profile payment") ;
-		if($redirect != null) {
-			$oidc->setRedirectURL($redirect);
-		} 
-		$oidc->authenticate();
-		session_regenerate_id();
-		session_start();
-		
+	function persistLogboostSession($logboostSession) {
 		$sess = new Session() ;
-		$sess->username = $oidc->requestUserInfo('preferred_username');
-		$sess->ip = $_SERVER['REMOTE_ADDR'] ;
-		$sess->date = @date('c') ;
-		$sess->validuntil = $oidc->requestUserInfo('valid_until');
-		$sess->plan = $oidc->requestUserInfo('plan');
+		$sess->username = $logboostSession->username ;
+		$sess->ip = $logboostSession->ip ;
+		$sess->date = $logboostSession->date ;
+		$sess->validuntil = $logboostSession->validuntil ;
+		$sess->plan = $logboostSession->plan ;
 		$sdao = new SessionsDao() ;
 		$sdao->save($sess) ;
-		if($redirect != null) {
-			header('Location: '.$redirect);
-		} else {
-			header('Location: upload.php?login=1');
-		}
 	}
 
 	function checkPrivileged() {

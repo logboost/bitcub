@@ -4,10 +4,8 @@
 
 	require("_/inc/functions.php");
 	require("_/inc/db/dbinit.php") ;
-	require("_/inc/vendor/phpseclib/phpseclib/phpseclib/Crypt/RSA.php");
-	require("_/inc/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger.php"); //TODO: replace with full lib require
-	
-	require("_/inc/vendor/jumbojett/openid-connect-php/OpenIDConnectClient.php") ;
+
+	require("_/inc/vendor/logboost/logboost-api-php/LogboostAPI.php") ;
 
 	//Config dbpath for unit test
 	SqliteDb::$dbpath = isset($test_dbpath) ? $test_dbpath : "" ;
@@ -22,8 +20,8 @@
 	}
 
 	//OpenID client configuration
-	$OpenID_clientID = $cdao->getValueByKey("openid_clientid") ;
-	$OpenID_clientSecret = $cdao->getValueByKey("openid_clientsecret") ;
+	$Logboost_clientID = $cdao->getValueByKey("openid_clientid") ;
+	$Logboost_clientSecret = $cdao->getValueByKey("openid_clientsecret") ;
 
 	//Hoster configuration
 	$Hoster_name = $cdao->getValueByKey("hoster_name") ;

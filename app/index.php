@@ -3,7 +3,20 @@
 checkNotPrivileged() ;
 $redirect_uri = isset($_GET['redirect_uri']) ? $_GET['redirect_uri'] : null ;
 if((isset($_GET['action']) && $_GET['action'] == 'login') || (isset($_GET['code']) && isset($_GET['state']))) {
-    connectOpenID($redirect_uri) ;
+    if((isset($_GET['action']) && $_GET['action'] == 'login')) {
+        session_start() ;
+        $_SESSION['LOGBOOST'] = serialize(new LogboostSession($redirect_uri)) ;
+        unserialize($_SESSION['LOGBOOST'])->openSession() ;
+    } else {
+        $lbSession = unserialize($_SESSION['LOGBOOST']) ;
+        $lbSession->handleSession() ;
+        persistLogboostSession($lbSession) ;
+        if($redirect_uri != null) {
+            header('Location: '.$redirect_uri);
+        } else {
+            header('Location: upload.php?login=1');
+        }
+    }
 } 
 ?>
 <!doctype html>
